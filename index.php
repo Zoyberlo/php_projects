@@ -1,11 +1,10 @@
+<?php
 
-<html><head> 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-<title>Моя первый PHP скрипт</title>
-</head>
-<body>
-<?	
-echo "<h1>Привет! Я PHP скрипт!</h1>"; 
+echo "<h1>Задача 1.</h1> Дана строка 'minsk'. Сделайте из нее строку 'MINSK'.<br>
+
+    Решение:</h1>"; 
+
+    echo strtoupper('minsk');
+
+
 ?>
-</body>
-</html>
