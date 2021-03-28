@@ -55,7 +55,9 @@ $date[2] = '.';
 $date[5] = '.';
 echo '<br>Стало: ' . $date . '<br>';
 
-unset($date, $arr, $str); 
+unset($date, $arr); 
+
+$TaskNumb++; 
 
 //Task 4
 
@@ -105,3 +107,79 @@ echo  'Было: ' . $str . '<br>Стало: ' . ucfirst(strtolower($str)) . '<b
 $TaskNumb++;  
 
 //Task 8
+
+echo "<h1>Задача $TaskNumb.</h1> Дана строка 'html css php'. Найдите количество символов в этой строке.<br><br>
+    Решение:<br><br>";
+    
+$str = 'html css php';
+
+echo  'Количество символов в строке равно: ' . strlen($str) . '<br>';
+
+$TaskNumb++;  
+
+//Task 9 
+
+echo "<h1>Задача $TaskNumb.</h1> Дана переменная \$password, в которой хранится пароль пользователя.<br> 
+    Если количество символов пароля больше 5-ти и меньше 10-ти, то выведите пользователю сообщение о том,<br> 
+    что пароль подходит, иначе сообщение о том, что нужно придумать другой пароль.<br><br>
+    Решение:<br><br>";
+    
+$password = '1279sdf2';
+
+if (strlen($password) > 5 && strlen($password) < 10){
+    echo  'Пароль подходит.<br>';
+}
+else if(strlen($password) > 10){
+    echo  'Пароль слишком длинный.<br>';
+}
+else{
+    echo  'Пароль слишком короткий.<br>';
+}
+
+$TaskNumb++;  
+
+//Task 10 ///////////////////////////////сделать попозже с полем ввода!!!!!!
+
+echo "<h1>Задача $TaskNumb.</h1> Дана строка 'html css php'. Вырежьте из нее и выведите на экран слово 'html', слово 'css' и слово 'php'.<br><br>
+    Решение:<br><br>";
+    
+$str = 'html css php';
+
+echo  substr($str, 0, 4) . '<br>';
+echo  substr($str, 5, 3) . '<br>';
+echo  substr($str, 9, 3) . '<br>';
+
+$TaskNumb++;  
+
+//Task 11
+
+echo "<h1>Задача $TaskNumb.</h1> Дана строка. Вырежите и выведите на экран последние 3 символа этой строки.<br><br>
+    Решение:<br><br>";
+
+echo  'Строка с которой нужно вырезать: ' . $str . '<br>';
+
+echo  'Последние 3 символа: ' . substr($str, strlen($str) - 3, 3) . '<br>';
+
+$TaskNumb++;  
+
+//Task 12
+
+echo "<h1>Задача $TaskNumb.</h1> Дана строка. Проверьте, что она начинается на 'http://'. Если это так, выведите 'да', если не так - 'нет'.<br><br>
+    Решение:<br><br>";
+
+echo  'Строка которую будет проверять: ' . $str . '<br>';
+
+$str = 'http:// html css php';
+
+$cutSymbols = substr($str, 0, 7);
+
+if($cutSymbols == 'http://'){
+    echo  'Да<br>';
+}
+else{
+    echo  'Нет<br>';
+}
+
+$TaskNumb++;  
+
+//Task 13
