@@ -367,3 +367,79 @@ if(strrpos($two_points, '..')){
 $TaskNumb++;
 
 //Task 24
+
+echo "<h1>Задача $TaskNumb.</h1> Дана строка 'html css php'. 
+    С помощью функции explode запишите каждое слово этой строки в отдельный элемент массива.<br><br>
+    Решение:<br><br>";
+
+$str = 'html css php';
+
+echo  'Было: ' . $str . '<br>';
+
+$str = explode(' ', $str);
+echo  'Стало:<br>';
+
+for($i = 0; $i < 3; $i++){
+    echo  $str[$i] . '<br>';
+}
+
+$TaskNumb++;
+
+//Task 25
+
+echo "<h1>Задача $TaskNumb.</h1> Дан массив с элементами 'html', 'css', 'php'. 
+    С помощью функции implode создайте строку из этих элементов, разделенных запятыми.<br><br>
+    Решение:<br><br>";
+
+$str = ['html', 'css', 'php'];
+
+$str = implode(', ', $str);
+
+echo  $str . '<br>';
+
+$TaskNumb++;
+
+//Task 26
+
+echo "<h1>Задача $TaskNumb.</h1> В переменной \$date лежит дата в формате '2013-12-31'. 
+    Преобразуйте эту дату в формат '31.12.2013'.<br><br>
+    Решение:<br><br>";
+
+$date = '2013-12-31';
+
+$date = explode('-', $date);
+
+$counter = 2;
+
+for($i = 0; $i < 3; $i++){
+    $reverse_date[$i] = $date[$counter];
+    $counter--;
+}
+
+$reverse_date = implode('.', $reverse_date);
+
+echo  $reverse_date . '<br>';
+
+$TaskNumb++;
+
+//Task 27
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка '1234567890'. 
+    Разбейте ее на массив с элементами '12', '34', '56', '78', '90'.<br><br>
+    Решение:<br><br>";
+
+$str = '1234567890';
+
+echo "Было: $str<br>";
+
+$arr = str_split($str, 2);
+
+echo 'Стало:<br>';
+
+for($i = 0; $i <= count($arr) - 1; $i++){
+    echo  $arr[$i] . '<br>';
+}
+
+$TaskNumb++;
+
+//Task 28
