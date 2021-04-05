@@ -7,7 +7,7 @@ require "header.php";
 <?php
 $TaskNumb = 1;
 echo "<h1>Задача $TaskNumb.</h1> Дана строка 'minsk'. Сделайте из нее строку 'MINSK'.<br><br>
-    Решение:<br><br>";
+    Решение:";
 $str = 'minsk';
 
 echo  'Было: ' . $str . '<br>Стало: ' . strtoupper($str) . '<br>';
@@ -136,7 +136,7 @@ if (strlen($password) > 5 && strlen($password) < 10) {
 
 $TaskNumb++;
 
-//Task 10 ///////////////////////////////сделать попозже с полем ввода!!!!!!
+//Task 10
 
 echo "<h1>Задача $TaskNumb.</h1> Дана строка 'html css php'. 
     Вырежьте из нее и выведите на экран слово 'html', слово 'css' и слово 'php'.<br><br>
@@ -443,3 +443,386 @@ for($i = 0; $i <= count($arr) - 1; $i++){
 $TaskNumb++;
 
 //Task 28
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка '1234567890'. 
+    Сделайте из нее строку '12-34-56-78-90' не используя цикл.<br><br>
+    Решение:<br><br>";
+
+$str = '1234567890';
+
+echo "Было: $str<br>";
+
+$str = implode('-', str_split($str, 2));
+
+echo 'Стало: ' . $str . '<br>';
+
+$TaskNumb++;
+
+//Task 29
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка '    12 345 678 90 '. 
+    Очистите ее от концевых пробелов.<br><br>
+    Решение:<br><br>";
+
+$str = ' 12 345 678 90 ';
+
+echo "Было:$str<br>";
+
+$str = trim($str);
+
+echo 'Стало:' . $str . '<br>';
+
+$TaskNumb++;
+
+//Task 30
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка '/php/'. 
+    Сделайте из нее строку 'php', удалив концевые слеши.<br><br>
+    Решение:<br><br>";
+
+$str = '/php/';
+
+echo "Было: $str<br>";
+
+$str = trim($str, '/');
+
+echo 'Стало: ' . $str . '<br>';
+
+$TaskNumb++;
+
+//Task 31
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'слова слова слова.'. 
+    В конце этой строки может быть точка, а может и не быть.<br>
+    Сделайте так, чтобы в конце этой строки гарантировано стояла точка. 
+    То есть: если этой точки нет - ее надо добавить, а если есть - ничего не делать.<br>
+    Задачу решите через rtrim без всяких ифов.<br><br>
+    Решение:<br><br>";
+
+$str = 'слова слова слова.';
+
+echo "Было: $str<br>";
+
+$str = rtrim($str, '.') . '.';
+
+echo 'Стало: ' . $str . '<br>';
+
+$TaskNumb++;
+
+//Task 32 //////////////////?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка '12345'. 
+    Сделайте из нее строку '54321'.<br><br>
+    Решение:<br><br>";
+
+$str = '12345';
+
+echo "Было: $str<br>";
+
+$str = strrev($str);
+
+echo 'Стало: ' . $str . '<br>';
+
+$TaskNumb++;
+
+//Task 33
+
+echo "<h1>Задача $TaskNumb.</h1>Проверьте, является ли слово палиндромом 
+    (одинаково читается во всех направлениях, примеры таких слов: madam, otto, kayak, nun, level).<br><br>
+    Решение:<br><br>";
+
+$str = 'madzam';
+
+echo 'Проверяемое слово: ' . $str . '<br>';
+
+if ($str == strrev($str)){
+    echo 'Это палиндром<br>';
+}else{
+    echo 'Это не палиндром<br>';
+}
+
+$TaskNumb++;
+
+//Task 34
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка. 
+    Перемешайте символы этой строки в случайном порядке.<br><br>
+    Решение:<br><br>";
+
+$str = 'привет';
+
+echo 'Начальное слово: ' . $str . '<br>';
+
+// echo str_shuffle($str) . '<br>'; для латинских символов
+
+$tmp = mb_str_split($str, );
+shuffle($tmp);
+$str = implode("", $tmp);
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 35
+
+echo "<h1>Задача $TaskNumb.</h1>Создайте строку из 6-ти случайных маленьких латинских букв так, 
+    чтобы буквы не повторялись. 
+    Нужно сделать так, чтобы в нашей строке могла быть любая латинская буква, а не ограниченный набор.<br><br>
+    Решение:<br><br>";
+
+$characters = 'abcdefghijklmnopqrstuvwxyz'; 
+$charactersLength = strlen($characters);
+$randomString = '';
+
+for ($i = 0; $i < 6; $i++) { // генерация рандомной строки
+    $randomString .= $characters[rand(0, $charactersLength - 1)];
+}
+
+$str = $randomString;
+
+echo 'Начальная строка: ' . $str . '<br>';
+
+$counter = 0;
+$doubleSymbols = true;
+
+while(gmp_fact(strlen($str)) >= $counter){ // gmp_fact - факториал числа, для поиска числа перестановок
+    $str = str_shuffle($str);
+    for($i = 0; $i < strlen($str)-1; $i++){
+        if($str[$i] == $str[$i+1]){
+            break;
+        } else if($i == strlen($str) - 2){
+            $doubleSymbols = false;
+        }
+    }
+    if($doubleSymbols == false){
+        break;
+    }
+    $counter++;
+}
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 36
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка '12345678'. Сделайте из нее строку '12 345 678'.<br><br>
+    Решение:<br><br>";
+
+$str = '12345678';
+
+echo 'Начальная строка: ' . $str . '<br>';
+
+$str = number_format($str); //отделение тройки чисел пробелами или округление дробной части
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 37
+
+echo "<h1>Задача $TaskNumb.</h1>Нарисуйте пирамиду, у вашей пирамиды должно быть 9 рядов. 
+    Решите задачу с помощью одного цикла и функции str_repeat.<br><br>
+    Решение:<br><br>";
+
+$str = 'x';
+
+for($i = 1; $i <=9; $i++){
+    echo str_repeat($str, $i) . "<br>"; // повтор сторки
+}
+
+$TaskNumb++;
+
+//Task 38
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'html, <b>php</b>, js'. 
+    Удалите теги из этой строки.<br><br>
+    Решение:<br><br>";
+
+$str = 'html, <b>php</b>, js';
+
+echo 'Начальная строка: ' . $str . '<br>';
+
+$str = strip_tags($str);
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 39
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'html, <i><b>php</b></i>, js'. 
+    Удалите все теги из этой строки, кроме тега i.<br><br>
+    Решение:<br><br>";
+
+$str = 'html, <b>php</b>, <i>js</i>';
+
+echo 'Начальная строка: ' . $str . '<br>';
+
+$str = strip_tags($str, ['<i>']);
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 40
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'html, <b>php</b>, js'. 
+    Выведите ее на экран 'как есть': то есть браузер не должен преобразовать < b > в жирный.<br><br>
+    Решение:<br><br>";
+
+$str = 'html, <b>php</b>, js';
+
+echo 'Начальная строка: ' . $str . '<br>';
+
+$str = htmlspecialchars($str);
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 41
+
+echo "<h1>Задача $TaskNumb.</h1>Узнайте ASCII-код символов 'a', 'b', 'c', пробела.<br><br>
+    Решение:<br><br>";
+
+$char_arr = ['a', 'b', 'c', 'пробела'];
+
+for($i = 0; $i < count($char_arr); $i++){
+    echo $char_arr[$i] . ' = ' . ord($char_arr[$i]) . '<br>';
+}
+
+$TaskNumb++;
+
+//Task 42
+
+echo "<h1>Задача $TaskNumb.</h1>Выведите на экран символ с кодом 33.<br><br>
+    Решение:<br><br>";
+
+echo chr(33) . '<br>';
+
+$TaskNumb++;
+
+//Task 43
+
+echo "<h1>Задача $TaskNumb.</h1>Запишите в переменную \$str случайную строку \$len длиной, 
+    состоящую из маленьких букв латинского алфавита. 
+    Подсказка: воспользуйтесь циклом for или while.<br><br>
+    Решение:<br><br>";
+
+$len = 10;
+$str = '';
+
+for($i = 0; $i <= $len; $i++){
+    $str .= chr(rand(97, 122));
+}
+
+echo $str . '<br>';
+
+$TaskNumb++;
+
+//Task 44
+
+echo "<h1>Задача $TaskNumb.</h1>Дана буква английского алфавита. 
+    Узнайте, она маленькая или большая.<br><br>
+    Решение:<br><br>";
+
+$character = 'a';
+
+echo  'Дан символ: ' . $character . '<br>';
+
+if(ord($character) >= 65 && ord($character) <= 90){
+    echo 'Это большая/маленькая буква английского алфавита<br>';
+}else if(ord($character) >= 97 && ord($character) <= 122){
+    echo 'Это маленькая буква английского алфавита<br>';
+}else{
+    echo 'Это не буква английского алфавита<br>';
+}
+
+$TaskNumb++;
+
+//Task 45
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'ab-cd-ef'. 
+    С помощью функции strchr выведите на экран строку '-cd-ef'..<br><br>
+    Решение:<br><br>";
+
+$str = 'ab-cd-ef';
+
+echo  'Данна строка: ' . $str . '<br>';
+
+echo  strchr($str, '-') . '<br>';
+
+$TaskNumb++;
+
+//Task 46
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'ab-cd-ef'. 
+    С помощью функции strrchr выведите на экран строку '-ef'.<br><br>
+    Решение:<br><br>";
+
+$str = 'ab-cd-ef';
+
+echo  'Данна строка: ' . $str . '<br>';
+
+echo  strrchr($str, '-') . '<br>'; // strstr - делает то же но со строкой
+
+$TaskNumb++;
+
+//Task 47
+
+echo "<h1>Задача $TaskNumb.</h1>Дана строка 'ab-cd-ef'. 
+    С помощью функции strrchr выведите на экран строку '-ef'.<br><br>
+    Решение:<br><br>";
+
+$str = 'ab-cd-ef';
+
+echo  'Данна строка: ' . $str . '<br>';
+
+echo  strrchr($str, '-') . '<br>';
+
+$TaskNumb++;
+
+//Task 48
+
+echo "<h1>Задача $TaskNumb.</h1>Преобразуйте строку 'var_test_text' в 'varTestText'. 
+    Скрипт, конечно же, должен работать с любыми аналогичными строками.<br><br>
+    Решение:<br><br>";
+
+$str = 'var_test_text';
+
+echo  'Данна строка: ' . $str . '<br>';
+
+$str = str_replace('_', ' ', $str);
+$str = lcfirst(ucwords($str));
+$str = str_replace(' ', '', $str);
+
+echo  $str . '<br>';
+
+$TaskNumb++;
+
+//Task 49
+
+echo "<h1>Задача $TaskNumb.</h1>Дан массив с числами. 
+    Выведите на экран все числа, в которых есть цифра 3.<br><br>
+    Решение:<br><br>";
+
+$arr = [13, 12, 32, '37', '93', 212312, 9367, '90', '50'];
+
+echo  'Данн массив: ';
+for($i = 0; $i < count($arr); $i++){
+    echo $arr[$i] . ' ';
+}
+echo '<br>';
+
+echo  'Число с тройкой: ';
+for($i = 0; $i < count($arr); $i++){
+    if(strrpos($arr[$i], '3') !== false){ // !== не равно false учитывая его тип bool
+        echo $arr[$i] . ' ';
+    }
+}
+echo '<br>';
+
+$TaskNumb++;
+
+//Task 50
